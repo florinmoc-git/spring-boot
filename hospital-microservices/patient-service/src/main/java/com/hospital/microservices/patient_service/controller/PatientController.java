@@ -19,4 +19,10 @@ public class PatientController {
     public Patient createPatient(@Valid @RequestBody Patient patient) {
         return patientService.createPatient(patient);
     }
+
+    @GetMapping(path = "/{patientId}")
+    @ResponseStatus(HttpStatus.OK)
+    public Patient getPatient(@PathVariable Long patientId) {
+        return patientService.getPatient(patientId);
+    }
 }

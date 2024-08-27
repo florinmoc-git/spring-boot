@@ -1,0 +1,12 @@
+services:
+  mariadb:
+    image: mariadb:lts
+    container_name: mariadb
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: mariadb
+    ports:
+      - 3307:3306
+    volumes:
+      - ./data/mariadb:/var/lib/mysql
+      - ./docker/mariadb/init.sql:/docker-entrypoint-initdb.d/init.sql

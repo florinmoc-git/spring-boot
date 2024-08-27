@@ -1,0 +1,15 @@
+spring:
+  application:
+    name: appointment-service
+  datasource:
+    url: jdbc:mariadb://localhost:3307/appointment_service
+    username: root
+    password: mariadb
+    driver-class-name: org.mariadb.jdbc.Driver
+  jpa:
+    hibernate:
+      ddl-auto: none
+server:
+  port: 8081
+patient-service:
+  url: http://localhost:8080

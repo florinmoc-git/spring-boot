@@ -13,7 +13,7 @@ public class PatientService {
         return patientRepository.save(patient);
     }
     public Patient getPatient(Long id) {
-        return null;
+        return patientRepository.findById(id).orElse(null);
     }
     public Patient updatePatient(Patient patient) {
         return patient;
