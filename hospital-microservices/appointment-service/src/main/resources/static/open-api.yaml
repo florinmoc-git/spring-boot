@@ -1,0 +1,122 @@
+openapi: 3.0.1
+info:
+  title: Appointment Service API X
+  description: Appointment Service API
+  license:
+    name: Apache 2.0
+  version: v0.0.1
+externalDocs:
+  description: You can read more about this API at
+  url: https://swagger.io
+servers:
+  - url: http://localhost:8081
+    description: Generated server url
+paths:
+  /api/appointment:
+    get:
+      tags:
+        - appointment-controller
+      operationId: getPatient
+      parameters:
+        - name: patientId
+          in: query
+          required: true
+          schema:
+            type: integer
+            format: int64
+      responses:
+        "200":
+          description: OK
+          content:
+            '*/*':
+              schema:
+                $ref: "#/components/schemas/Patient"
+    post:
+      tags:
+        - appointment-controller
+      operationId: createAppointment
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/AppointmentDto"
+        required: true
+      responses:
+        "201":
+          description: Created
+          content:
+            '*/*':
+              schema:
+                $ref: "#/components/schemas/AppointmentDto"
+components:
+  schemas:
+    AppointmentDto:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+        dateTime:
+          type: string
+          format: date-time
+          example: "01.01.2000 10:45"
+        doctorId:
+          type: integer
+          format: int64
+        patientId:
+          type: integer
+          format: int64
+        department:
+          type: string
+    Address:
+      type: object
+      properties:
+        number:
+          type: integer
+          format: int32
+        street:
+          type: string
+        city:
+          type: string
+        county:
+          type: string
+        postcode:
+          type: string
+        country:
+          type: string
+    Patient:
+      required:
+        - firstName
+        - lastName
+      type: object
+      properties:
+        title:
+          type: string
+        firstName:
+          type: string
+        lastName:
+          type: string
+        address:
+          $ref: "#/components/schemas/Address"
+        dob:
+          type: string
+          format: date
+          example: "01.01.2000"
+        phone:
+          type: string
+        email:
+          type: string
+        id:
+          type: integer
+          format: int64
+        weight:
+          type: integer
+          format: int32
+        height:
+          type: number
+          format: double
+        wardId:
+          type: integer
+          format: int32
+        attendingDoctorId:
+          type: string

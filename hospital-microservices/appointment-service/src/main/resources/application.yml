@@ -13,3 +13,9 @@ server:
   port: 8081
 patient-service:
   url: http://localhost:8080
+springdoc:
+  swagger-ui:
+    path: /swagger-ui.html
+#    url: /open-api.yaml
+  api-docs:
+    path: /api-docs

@@ -24,6 +24,11 @@ public class AppointmentController {
 
     @GetMapping
     public Patient getPatient(@RequestParam Long patientId) {
+//        try {
+//            Thread.sleep(5000);
+//        } catch (InterruptedException e) {
+//            throw new RuntimeException(e);
+//        }
         return patientClient.getPatient(patientId);
     }
 }

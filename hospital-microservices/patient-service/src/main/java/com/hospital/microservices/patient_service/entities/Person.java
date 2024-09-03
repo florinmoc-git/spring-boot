@@ -2,6 +2,7 @@ package com.hospital.microservices.patient_service.entities;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.hospital.microservices.patient_service.entities.embedables.Address;
+import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.persistence.MappedSuperclass;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
@@ -24,6 +25,7 @@ public class Person {
     @NotBlank(message = "Last name cannot be blank")
     private String lastName;
     private Address address;
+    @Schema(format = "dd.MM.yyyy", type = "string", example = "01.01.2000")
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd.MM.yyyy")
     private LocalDate dob;
     private String phone;
